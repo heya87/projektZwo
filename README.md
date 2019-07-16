@@ -9,7 +9,7 @@ tbd.
 
 ```
 git clone https://github.com/heya87/projektZwo.git
-cd projectOne/  
+cd projektZwo/  
 git checkout develop   
 ```
 
