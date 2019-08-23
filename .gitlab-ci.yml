@@ -18,4 +18,5 @@ deploy:
     dependencies:
         - build
     script:
+        - npm install --quiet
         - npm run deploy
