@@ -22,8 +22,6 @@ test:
 
 deploy:
     stage: deploy
-    name: production
-    url: $FIREBASE_URL
     only:
         - master
     dependencies:
