@@ -1,6 +1,11 @@
 {
   "hosting": {
-    "public": "dist/projektZwo",
+    "public": "dist/your_application_name",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
     "rewrites": [
       {
         "source": "**",
