@@ -1,0 +1,33 @@
+<form [formGroup]="form" novalidate (submit)=onAdd()>
+
+    <input placeholder="Worker" 
+           formControlName="worker" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="task" 
+           formControlName="task" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="location" 
+           formControlName="location" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="date" 
+           formControlName="date" 
+           type="text" 
+           class="input-field col s12"
+           #date>
+    <input placeholder="start" 
+           formControlName="start" 
+           type="text" 
+           class="input-field col s12">
+    <input placeholder="end" 
+           formControlName="end" 
+           type="text" 
+           class="input-field col s12">
+    <button 
+        class="waves-effect waves-light btn col s12" 
+        type="submit">
+            Submit
+    </button>
+</form>
