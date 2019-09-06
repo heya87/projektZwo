@@ -6,16 +6,11 @@ import { AppComponent } from './app.component';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { ShiftsComponent } from './shifts/shifts.component';
-import { ShiftListComponent } from './shift-list/shift-list.component';
-import { ShiftsService } from './shared/shifts.service';
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShiftsComponent,
-    ShiftListComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +19,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     AngularFirestoreModule,
     ReactiveFormsModule,
   ],
-  providers: [ShiftsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
