@@ -27,5 +27,4 @@ deploy:
         - build
     script:
         - npm install
-        - 
         - npm run deploy
