@@ -16,7 +16,7 @@ export class ShiftFormComponent implements OnInit {
     end: new FormControl('', Validators.required),
     noOfWorker: new FormControl('', Validators.required),
   });
-  private status$: Observable<string>;
+  status$: Observable<string>;
 
   constructor(private shiftService: ShiftsService) { }
 
