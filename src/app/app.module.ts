@@ -7,6 +7,8 @@ import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ReactiveFormsModule } from "@angular/forms";
+import {ShiftsModule} from './shifts/shifts.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ReactiveFormsModule,
+    ShiftsModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,16 @@
+<div *ngIf="loading$ | async">
+  Loading...
+</div>
+<div *ngIf="noResults$ | async">
+  No results
+</div>
+<div class="card bg-light mb-3" style="max-width: 18rem;" *ngFor="let shift of shifts$ | async">
+  <div class="card-header">{{shift.title}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{shift.title}}</h5>
+    <p class="card-text">{{shift.start}}</p>
+    <p class="card-text">{{shift.end}}</p>
+    <p class="card-text">{{shift.noOfWorker}}</p>
+    <button (click)="delete(shift)" class="btn btn-danger">Delete</button>
+  </div>
+</div>
