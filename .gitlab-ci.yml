@@ -3,8 +3,7 @@ image: node:latest
 
 stages:
   - build
-  ## todo enable tests as soon as set up
-  ##- test
+  - test
   - deploy
 
 build:
