@@ -21,11 +21,10 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isLoggedIn !== true) {
       this.router.navigate([authRoutesNames.SIGNIN]);
-    }
-    if (this.authService.isEmailVerified !== true) {
+    } else if (this.authService.isEmailVerified !== true) {
       this.router.navigate([authRoutesNames.VERIFY_EMAIL]);
+    } else {
+      return true;
     }
-    return true;
   }
-
 }
