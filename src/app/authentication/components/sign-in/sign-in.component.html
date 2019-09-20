@@ -1,3 +1,10 @@
+<div class="row">
+  <div class="col-12 mb-3">
+    <h4>
+      Sign In
+    </h4>
+  </div>
+</div>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="name">Name</label>
@@ -17,3 +24,6 @@
   </div>
   <button [disabled]="form.invalid" type="submit" class="btn btn-primary d-inline">Sign In</button>
 </form>
+<div>
+  <button (click)="navigateToSignUp()" class="btn btn-primary d-inline">Create User</button>
+</div>
