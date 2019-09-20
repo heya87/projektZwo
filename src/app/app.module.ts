@@ -9,6 +9,10 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ReactiveFormsModule } from "@angular/forms";
 import {ShiftsModule} from './shifts/shifts.module';
 import {CoreModule} from './core/core.module';
+import {DashboardModule} from './dashboard/dashboard.module';
+import {AuthenticationModule} from './authentication/authentication.module';
+import {AuthService} from './authentication/service/auth.service';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -19,11 +23,15 @@ import {CoreModule} from './core/core.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     ShiftsModule,
+    DashboardModule,
+    AuthenticationModule,
     CoreModule
   ],
-  providers: [],
+  providers: [AuthService],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
