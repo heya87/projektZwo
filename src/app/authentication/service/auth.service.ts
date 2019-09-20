@@ -4,6 +4,8 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import {authRoutesNames} from '../auth.route.names';
+import {dashboardRoutesNames} from '../../dashboard/dashboard.route.names';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +39,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([dashboardRoutesNames.BASE]);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -62,7 +64,7 @@ export class AuthService {
   SendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate([authRoutesNames.VERIFY_EMAIL]);
       });
   }
 
@@ -92,7 +94,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([dashboardRoutesNames.BASE]);
         })
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -121,7 +123,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate([authRoutesNames.SIGNIN]);
     });
   }
 

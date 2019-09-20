@@ -5,16 +5,17 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import {VerifyEmailComponent} from './components/verify-email/verify-email.component';
 import {AuthPageComponent} from './components/auth-page/auth-page.component';
+import {authRoutesNames} from './auth.route.names';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/auth/sign-in', pathMatch: 'full'},
+  {path: '', redirectTo: authRoutesNames.SIGNIN, pathMatch: 'full'},
   {
-    path: 'auth', component: AuthPageComponent, children: [
-      {path: 'sign-in', component: SignInComponent},
-      {path: 'register-user', component: SignUpComponent},
-      {path: 'forgot-password', component: ForgotPasswordComponent},
-      {path: 'verify-email-address', component: VerifyEmailComponent}
+    path: authRoutesNames.BASE, component: AuthPageComponent, children: [
+      {path: authRoutesNames.SUB_SIGNIN, component: SignInComponent},
+      {path: authRoutesNames.SUB_SIGNUP, component: SignUpComponent},
+      {path: authRoutesNames.SUB_RESET_PASSWORD, component: ForgotPasswordComponent},
+      {path: authRoutesNames.SUB_VERIFY_EMAIL, component: VerifyEmailComponent}
     ]
   },
 ];

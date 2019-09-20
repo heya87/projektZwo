@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import {authRoutesNames} from '../../auth.route.names';
 
 @Component({
   selector: 'app-sign-in',
@@ -34,6 +35,6 @@ export class SignInComponent implements OnInit {
   }
 
   navigateToSignUp() {
-    this.router.navigate(['auth/register-user']);
+    this.router.navigate([authRoutesNames.SIGNUP]);
   }
 }
