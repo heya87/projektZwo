@@ -1,9 +1,9 @@
-import { Injectable, NgZone } from '@angular/core';
-import { User } from '../../models/user';
-import { auth } from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import {Injectable, NgZone} from '@angular/core';
+import {User} from '../../models/user';
+import {auth} from 'firebase/app';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
 import {authRoutesNames} from '../auth.route.names';
 import {dashboardRoutesNames} from '../../dashboard/dashboard.route.names';
 
@@ -31,14 +31,16 @@ export class AuthService {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
-    })
+    });
   }
 
   // Sign in with email/password
-  SignIn(email, password) {
+  signIn(email, password) {
+    console.log('try to sign in');
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          console.log('worked, navigating to dashbaord');
           this.router.navigate([dashboardRoutesNames.BASE]);
         });
         this.SetUserData(result.user);
@@ -48,12 +50,12 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  signUp(email, password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
-        this.SendVerificationMail();
+        this.sendVerificationMail();
         this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error.message);
@@ -61,7 +63,7 @@ export class AuthService {
   }
 
   // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
+  sendVerificationMail() {
     return this.afAuth.auth.currentUser.sendEmailVerification()
       .then(() => {
         this.router.navigate([authRoutesNames.VERIFY_EMAIL]);
@@ -84,6 +86,11 @@ export class AuthService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
+  get isEmailVerified(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null) ? user.emailVerified : false;
+  }
+
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
@@ -95,7 +102,7 @@ export class AuthService {
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate([dashboardRoutesNames.BASE]);
-        })
+        });
         this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error);
@@ -113,18 +120,16 @@ export class AuthService {
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
-    }
+    };
     return userRef.set(userData, {
       merge: true
     });
   }
 
   // Sign out
-  SignOut() {
+  signOut() {
     return this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate([authRoutesNames.SIGNIN]);
     });
   }
-
 }

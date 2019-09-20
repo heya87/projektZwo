@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
 
   async submit() {
     this.form.disable();
-    await this.authService.SignUp(this.form.value.name, this.form.value.password);
+    await this.authService.signUp(this.form.value.name, this.form.value.password);
     this.form.reset();
     this.form.enable();
   }

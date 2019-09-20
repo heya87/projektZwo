@@ -6,12 +6,13 @@ import {ForgotPasswordComponent} from './components/forgot-password/forgot-passw
 import {VerifyEmailComponent} from './components/verify-email/verify-email.component';
 import {AuthPageComponent} from './components/auth-page/auth-page.component';
 import {authRoutesNames} from './auth.route.names';
+import {SecureInnerPagesGuard} from './guard/secure-inner-pages.guard';
 
 
 const routes: Routes = [
   {path: '', redirectTo: authRoutesNames.SIGNIN, pathMatch: 'full'},
   {
-    path: authRoutesNames.BASE, component: AuthPageComponent, children: [
+    path: authRoutesNames.BASE, component: AuthPageComponent, canActivate: [SecureInnerPagesGuard], children: [
       {path: authRoutesNames.SUB_SIGNIN, component: SignInComponent},
       {path: authRoutesNames.SUB_SIGNUP, component: SignUpComponent},
       {path: authRoutesNames.SUB_RESET_PASSWORD, component: ForgotPasswordComponent},

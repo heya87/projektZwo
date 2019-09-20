@@ -24,6 +24,7 @@ export class SignInComponent implements OnInit {
 
   async submit() {
     this.form.disable();
+    await this.authService.signIn(this.form.value.name, this.form.value.password);
     //todo handle login
     this.form.reset();
     this.form.enable();
