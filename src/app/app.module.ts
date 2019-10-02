@@ -14,6 +14,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {AuthService} from './authentication/service/auth.service';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialDesignModule } from '../material-design/material-design.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardModule,
     AuthenticationModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialDesignModule
   ],
   providers: [AuthService],
   exports: [],
