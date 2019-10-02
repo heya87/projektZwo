@@ -13,6 +13,7 @@ import {DashboardModule} from './dashboard/dashboard.module';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {AuthService} from './authentication/service/auth.service';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
     ShiftsModule,
     DashboardModule,
     AuthenticationModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService],
   exports: [],
