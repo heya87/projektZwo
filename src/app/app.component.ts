@@ -20,12 +20,15 @@ export class AppComponent {
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(min-width: 500px)'])
+      .observe(['(min-width: 768px)', '(min-width: 1200px)'])
       .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          console.log('Viewport is 500px or over!');
+        if (state.breakpoints['(min-width: 768px)'] &&! 
+            state.breakpoints['(min-width: 1200px)']) {
+          console.log('Viewport is between 768 and 1200!');
+        } else if (state.breakpoints['(min-width: 1200px)']) {
+          console.log('Viewport is over 1200!');
         } else {
-          console.log('Viewport is getting smaller!');
+          console.log('viewport under 768');
         }
       });
   }
